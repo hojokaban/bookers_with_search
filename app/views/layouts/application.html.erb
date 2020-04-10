@@ -19,12 +19,10 @@
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-            <li>
-              <span class="glyphicon glyphicon-home" aria-hidden="true"></span>"Home"
-              </li>
-            <li>About</li>
-            <li>sign up</li>
-            <li>login</li>
+            <li><%= link_to("/") do %><span class="glyphicon glyphicon-home" aria-hidden="true"></span>　Home<% end %></li>
+            <li><%= link_to("/") do %><span class="glyphicon glyphicon-user" aria-hidden="true"></span>　Users<% end %></li>
+            <li><%= link_to("/") do %><span class="glyphicon glyphicon-book" aria-hidden="true"></span>　Books<% end %></li>
+            <li><%= link_to(destroy_user_session_path, method: :delete) do %><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>　logout<% end %></li>
             <% else %>
             <li><%= link_to("/") do %><span class="glyphicon glyphicon-home" aria-hidden="true"></span>　Home<% end %></li>
             <li><%= link_to(about_book_path) do %><span class="glyphicon glyphicon-link" aria-hidden="true"></span>　About<% end %></li>
