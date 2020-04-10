@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bookers</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Bookers</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
+<body>
 
-    <head class="container">
+  <header class="navbar navbar-inverse">
+    <div class="container">
+        <nav class="nav navbar-nav navbar-left">
+          <h4>Bookers</h4>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li>
+              <span class="glyphicon glyphicon-home" aria-hidden="true"></span>"Home"
+              </li>
+            <li>About</li>
+            <li>sign up</li>
+            <li>login</li>
+            <% else %>
+            <li><%= link_to("/") do %><span class="glyphicon glyphicon-home" aria-hidden="true"></span>　Home<% end %></li>
+            <li><%= link_to("/") do %><span class="glyphicon glyphicon-link" aria-hidden="true"></span>　About<% end %></li>
+            <li><%= link_to("/") do %><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>　sign up<% end %></li>
+            <li><%= link_to("/") do %><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>　login<% end %></li>
+            <% end %>
+          </ul>
+        </nav>
+    </div>
+  </header>
+
+
+  <%= yield %>
+
+  <footer>
+    <div class="container">
       <div class="row">
-      <div class="head-title">
-        <h4>Bookers</h4>
-      </div>
-      <div class="slidemenu">
-        <ul>
-          <% if user_signed_in? %>
-          <li>Home</li>
-          <li>About</li>
-          <li>sign up</li>
-          <li>login</li>
-          <% else %>
-          <li>Home</li>
-          <li>About</li>
-          <li>sign up</li>
-          <li>login</li>
-          <% end %>
-        </ul>
+        <div class="col-xs-3 col-xs-offset-9">
+          <p>CopyRight Infratop.inc</p>
+        </div>
       </div>
     </div>
-    </head>
+  </footer>
 
-
-    <%= yield %>
-
-    <footer>
-      <p>CopyRight Infratop.inc</p>
-    </footer>
-
-  </body>
+</body>
 </html>
