@@ -1,18 +1,23 @@
 
 <div class="col-xs-3">
 	<h2>User info</h2>
-	<%= image_tag('866-200x300.jpg', style:"height: 100px; width: 100px;") %>
+	<%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "noimages.png", size:'100x100' %>
 	<table class="table">
 		<tr>
 			<th>name</th>
-			<th>hojokaban</th>
+			<th><%= user.name %></th>
 		</tr>
 		<tr>
 			<th>introduction</th>
-			<th>ああああああああああああああああああああああ</th>
+			<th><%= user.introduction %></th>
 		</tr>
 	</table>
-	<div class="col-xs-12 btn btn-default submit-btn" id="btnn" style="height: 35px;"><span class="glyphicon glyphicon-wrench"></span></div>
+	<% if user == current_user %>
+	<%= link_to(edit_user_path(user), class:"col-xs-12 btn btn-default submit-btn", id:"btnn", style:"height: 35px;") do %><span class="glyphicon glyphicon-wrench"></span><% end %>
+	<% else %>
+	<%= link_to(user_path(current_user), class:"col-xs-12 btn btn-default submit-btn", id:"btnn", style:"height: 35px;") do %><span class="glyphicon glyphicon-wrench"></span><% end %>
+	<% end %>
+
 	<div class="row">
 		<h2>New book</h2>
 		<%= form_for(book) do |f| %>
