@@ -17,6 +17,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+//user-edit-button
+#btn:hover{
+	color: #333;
+}
+
+
 //application
 header{
 color: white;
@@ -30,9 +37,6 @@ margin-top: 50px;
 .submit-btn{
 	margin: 10px 0;
 }
-.link-btn a:hover{
-	background-color: #FFF;
-}
 
 //home
 .btn:visited {
@@ -41,4 +45,9 @@ margin-top: 50px;
 
 .btn:hover{
 	color:#fff;
+}
+
+//slidebar
+.create-btn{
+	margin: 60px 0;
 }

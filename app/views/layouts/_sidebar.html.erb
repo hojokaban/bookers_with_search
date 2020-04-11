@@ -1,24 +1,28 @@
 
-		<div class="col-xs-3">
-			<h2>User info</h2>
-			<img src="assets/images/866-200x300.jpg">
-			<table>
-				<tr>
-					<th>name</th>
-					<th>hojokaban</th>
-				</tr>
-				<tr>
-					<th>introduction</th>
-					<th>ahahahhahahhahahahhahhahhahaha</th>
-				</tr>
-				</table>
-				<button><span class="glyphincon glyphincon-wrench"></span></button>
-			<h2>New book</h2>
-			<%= form_for(book) do |f| %>
-			<%= f.label :title, "Title" %>
-			<%= f.text_field :title %>
-			<%= f.label :body, "Opinion" %>
-			<%= f.text_area :body %>
-			<%= f.submit 'Create Book' %>
-			<% end %>
+<div class="col-xs-3">
+	<h2>User info</h2>
+	<%= image_tag('866-200x300.jpg', style:"height: 100px; width: 100px;") %>
+	<table class="table">
+		<tr>
+			<th>name</th>
+			<th>hojokaban</th>
+		</tr>
+		<tr>
+			<th>introduction</th>
+			<th>ああああああああああああああああああああああ</th>
+		</tr>
+	</table>
+	<div class="col-xs-12 btn btn-default submit-btn" id="btn" style="height: 35px;"><span class="glyphicon glyphicon-wrench"></span></div>
+	<div class="row">
+		<h2>New book</h2>
+		<%= form_for(book) do |f| %>
+		<%= f.label :title, "Title" %><br>
+		<%= f.text_field :title , class:"col-xs-12"%>
+		<%= f.label :body, "Opinion" %>
+		<%= f.text_area :body , class:"col-xs-12"%>
+		<div class ="create-btn">
+			<%= f.submit 'Create Book', class:"btn btn-primary col-xs-12" %>
 		</div>
+		<% end %>
+	</div>
+</div>

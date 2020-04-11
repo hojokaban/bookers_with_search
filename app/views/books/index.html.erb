@@ -3,6 +3,24 @@
 		<%= render 'layouts/sidebar', book: @book %>
 		<div class="col-xs-9">
 			<h2>Books</h2>
+			<table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Title</th>
+						<th>Opinion</th>
+					</tr>
+				</thead>
+				<% @books.each do |book| %>
+				<tbody>
+					<tr>
+						<td><%= image_tag('866-200x300.jpg', style:"height: 50px; width: 50px;") %></td>
+						<td><%= link_to book.title, book_path(book) %></td>
+						<td><%= book.body %></td>
+					</tr>
+				</tbody>
+				<% end %>
+			</table>
 		</div>
 	</div>
 </div>
