@@ -4,11 +4,11 @@
 		<div class="col-xs-9">
 			<h2>Book detail</h2>
 			<table class="table">
-				<th style="font-weight: 20; width: 102px;"><%= image_tag('866-200x300.jpg', style:"height: 100px; width: 100px;") %><a><%= @bookx.user.name %></a></th>
+				<th style="font-weight: 20;"><%= image_tag('866-200x300.jpg', style:"height: 100px; width: 100px;") %><br><a><%= @bookx.user.name %></a></th>
 				<th style="font-weight: 20;"><%= link_to @bookx.title, book_path(@bookx) %></th>
 				<th style="font-weight: 20;"><%= @bookx.body %></th>
-				<% if @book.user != current_user %>
-				<th class="text-right"><%= link_to "Edit", books_path, class:"btn btn-success" %></th>
+				<% if @bookx.user == current_user %>
+				<th class="text-right"><%= link_to "Edit", edit_book_path(@bookx), class:"btn btn-success" %></th>
 				<th class="text-right"><%= link_to "Destroy", book_path(@bookx), method: :delete, "data-confirm" => "sure?", class:"btn btn-danger" %></th>
 				<% end %>
 			</table>
