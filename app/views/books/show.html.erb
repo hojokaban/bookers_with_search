@@ -1,10 +1,10 @@
-<div class="container">
+
 	<div class="row">
 		<%= render 'layouts/sidebar', book: @book, user: @user %>
 		<div class="col-xs-9">
 			<h2>Book detail</h2>
 			<table class="table">
-				<th style="font-weight: 20;"><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpg', fallback: "noimages.png", size:'50x50' %><br><%= link_to @bookx.user.name, user_path(@bookx.user) %></th>
+				<th style="font-weight: 20;"><%= link_to user_path(@bookx.user) do %><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpg', fallback: "noimages.png", size:'50x50' %><br><%= @bookx.user.name %><% end %></th>
 				<th style="font-weight: 20;"><%= link_to @bookx.title, book_path(@bookx) %></th>
 				<th style="font-weight: 20;"><%= @bookx.body %></th>
 				<% if @bookx.user == current_user %>
@@ -14,4 +14,3 @@
 			</table>
 		</div>
 	</div>
-</div>
