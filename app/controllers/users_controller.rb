@@ -24,6 +24,9 @@ class UsersController < ApplicationController
   	if user.update(user_params)
       flash[:notice] = "Successfully updated."
       redirect_to user_path(user)
+    else
+      @user = user
+      render :edit
     end
   end
 
