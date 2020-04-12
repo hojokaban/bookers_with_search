@@ -9,7 +9,7 @@
 				<th style="font-weight: 20;"><%= @bookx.body %></th>
 				<% if @bookx.user == current_user %>
 				<th class="text-right"><%= link_to "Edit", edit_book_path(@bookx), class:"btn btn-success" %></th>
-				<th class="text-right"><%= link_to "Destroy", book_path(@bookx), method: :delete, "data-confirm" => "sure?", class:"btn btn-danger" %></th>
+				<th class="text-right"><%= link_to "Destroy", book_path(@bookx), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-danger" %></th>
 				<% end %>
 			</table>
 		</div>
