@@ -4,3 +4,7 @@ book1:
   body: book1_body
   user: luffy
 
+book2:
+  title: book2
+  body: book2_body
+  user: luffy

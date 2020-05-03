@@ -4,3 +4,9 @@ luffy:
   introduction: kaizokuou ni ore wa naru
   email: luffy@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+zoro:
+  name: Roronoa Zoro
+  introduction: senakano kizu wa kenshi no haji
+  email: zoro@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
