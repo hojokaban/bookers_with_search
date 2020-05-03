@@ -12,6 +12,22 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", new_user_registration_path, count: 2
 	end
 
+	test "should not redirect to when not logged in" do
+
+		get books_path
+		assert_redirected_to new_user_session_path
+		get users_path
+		assert_redirected_to new_user_session_path
+		get book_path(1)
+		assert_redirected_to new_user_session_path
+		get user_path(1)
+		assert_redirected_to new_user_session_path
+		get edit_book_path(1)
+		assert_redirected_to new_user_session_path
+		get edit_user_path(1)
+		assert_redirected_to new_user_session_path
+	end
+
 	def setup
 		@user = users(:luffy)
 	end
