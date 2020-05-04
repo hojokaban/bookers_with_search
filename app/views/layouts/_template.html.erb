@@ -18,6 +18,8 @@
 						<td><%= link_to user_path(book.user) do %><%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format: 'jpg', fallback: "noimages.png", size:'50x50' %><% end %></td>
 						<td><%= link_to book.title, book_path(book) %></td>
 						<td><%= book.body %></td>
+						<td><i class="fas fa-heart"></i></td>
+						<td><i class="far fa-heart"></i></td>
 					</tr>
 				</tbody>
 				<% end %>
