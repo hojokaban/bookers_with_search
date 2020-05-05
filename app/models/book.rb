@@ -10,7 +10,7 @@ class Book < ApplicationRecord
 	end
 
 	def favorites_count
-		self.favorites.count.to_s
+		favorites.count.to_s
 	end
 
 end

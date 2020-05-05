@@ -10,6 +10,10 @@ class FavoriteInterfaceTest < ActionDispatch::IntegrationTest
 	end
 
 	test "favorite interface" do
+		#redirect_back cannot be tested. It needs a test by hand.
+
+		#test favorite create in books/index
+		get books_path
 		assert_difference 'Favorite.count', 1 do
 			post favorite_path(@book)
 		end
@@ -17,6 +21,9 @@ class FavoriteInterfaceTest < ActionDispatch::IntegrationTest
 		follow_redirect!
 		assert_select "i.fas"
 		assert_match @book.favorites.count.to_s, response.body
+
+		#test favorite destroy in books/show
+		get book_path(@book)
 		assert_difference 'Favorite.count', -1 do
 			delete favorite_path(@book)
 		end
@@ -24,7 +31,7 @@ class FavoriteInterfaceTest < ActionDispatch::IntegrationTest
 		follow_redirect!
 		assert_select "i.far"
 		assert_match @book.favorites.count.to_s, response.body
-
 	end
+
 
 end
