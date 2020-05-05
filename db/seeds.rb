@@ -18,5 +18,5 @@ users = User.all
 user = users.first
 following = users[2..29]
 followers = users[3..19]
-#following.each{ |followed| user.follow(followed)}
-#followers.each{ |follower| follower.follow(user)}
+following.each{ |followed| user.follow(followed)}
+followers.each{ |follower| follower.follow(user)}
