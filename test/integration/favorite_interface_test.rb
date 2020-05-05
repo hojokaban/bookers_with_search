@@ -25,7 +25,7 @@ class FavoriteInterfaceTest < ActionDispatch::IntegrationTest
 		#test favorite destroy in books/show
 		get book_path(@book)
 		assert_difference 'Favorite.count', -1 do
-			delete favorite_path(@book)
+			delete favorites_path(@book)
 		end
 		assert_redirected_to books_path
 		follow_redirect!
