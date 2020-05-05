@@ -11,9 +11,7 @@
 				<%= render 'books/favorite', book: @book %>
 				<%= render 'edit_destroy_buttons', book: @book %>
 			</tr>
-			<tr>
-				<td colspan="0"><p></p></td>
-			</tr>
+			<tr><%= render 'comment_form', book: @book, comment: @comment %></tr>
 		</table>
 	</div>
 </div>
