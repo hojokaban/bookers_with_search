@@ -8,10 +8,7 @@
 			<th style="font-weight: 20;"><%= link_to @book.title, book_path(@book) %></th>
 			<th style="font-weight: 20;"><%= @book.body %></th>
 			<th><%= render 'books/favorite', book: @book %></th>
-			<% if @book.user == current_user %>
-			<th class="text-right"><%= link_to "Edit", edit_book_path(@book), class:"btn btn-success" %></th>
-			<th class="text-right"><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-danger" %></th>
-			<% end %>
+			<%= render 'edit_destroy_buttons', book: @book %>
 		</table>
 	</div>
 </div>

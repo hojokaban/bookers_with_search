@@ -1,0 +1,6 @@
+<!-- recieves book -->
+
+<% if book.user == current_user %>
+<th class="text-right"><%= link_to "Edit", edit_book_path(book), class:"btn btn-success" %></th>
+<th class="text-right"><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-danger" %></th>
+<% end %>
