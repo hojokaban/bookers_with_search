@@ -9,6 +9,8 @@ class FavoritesController < ApplicationController
 	end
 
 	def destroy
+		#binding.pry
+		Favorite.find_by(user_id: current_user.id, book_id: params[:id]).destroy
 		redirect_to books_path
 	end
 

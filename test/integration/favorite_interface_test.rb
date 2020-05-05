@@ -16,9 +16,14 @@ class FavoriteInterfaceTest < ActionDispatch::IntegrationTest
 		assert_redirected_to books_path
 		follow_redirect!
 		assert_select "i.fas"
-#		assert_difference 'Favorite.count', -1 do
-#			delete favorite_path(@book)
-#		end
+		assert_match @book.favorites.count.to_s, response.body
+		assert_difference 'Favorite.count', -1 do
+			delete favorite_path(@book)
+		end
+		assert_redirected_to books_path
+		follow_redirect!
+		assert_select "i.far"
+		assert_match @book.favorites.count.to_s, response.body
 
 	end
 

@@ -9,4 +9,8 @@ class Book < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
 	end
 
+	def favorites_count
+		self.favorites.count.to_s
+	end
+
 end
