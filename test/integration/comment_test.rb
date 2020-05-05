@@ -12,8 +12,12 @@ class CommentTest < ActionDispatch::IntegrationTest
 	end
 
 	test "comment interface" do
+
+		#books/show
+
 		get book_path(@book)
 		assert_match @comment.content, response.body
+		assert_match "1 comment", response.body
 		assert_select "form"
 		assert_select "a", text:"Delete", count: 0
 

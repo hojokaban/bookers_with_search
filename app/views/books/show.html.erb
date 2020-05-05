@@ -9,6 +9,7 @@
 				<td style="font-weight: 20;"><%= link_to @book.title, book_path(@book) %></td>
 				<td style="font-weight: 20;"><%= @book.body %></td>
 				<%= render 'books/favorite', book: @book %>
+				<td><%= pluralize(@book.book_comments.count, 'comment') %></td>
 				<%= render 'books/edit_destroy_buttons', book: @book %>
 			</tr>
 		</table>
