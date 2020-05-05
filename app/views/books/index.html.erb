@@ -1,2 +1,2 @@
 <%= render 'devise/shared/error_messages', resource: @book %>
-<%= render 'layouts/template', book: @book, user: @user, books: @books %>
+<%= render 'layouts/template', book: @book, user: current_user, books: @books %>

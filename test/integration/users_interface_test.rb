@@ -20,6 +20,7 @@ class UsersInterfaceTest < ActionDispatch::IntegrationTest
 		assert_select "img"
 		assert_match @user.name, response.body
 		assert_select "a[href=?]", user_path(@user)
+		assert_select "a[href=?]", edit_user_path(@user)
 
 		#users/edit
 
@@ -41,6 +42,7 @@ class UsersInterfaceTest < ActionDispatch::IntegrationTest
 		#users/show
 
 		assert_select "a[href=?]", book_path(@book)
+		assert_select "a[href=?]", edit_user_path(@user)
 
 	end
 end
