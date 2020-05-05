@@ -34,6 +34,7 @@ class CommentTest < ActionDispatch::IntegrationTest
 
 		#comment destroy by user
 
+		assert_select "a", "Delete"
 		assert_difference 'BookComment.count', -1 do
 			delete comments_path(@book)
 		end
