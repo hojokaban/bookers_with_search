@@ -13,6 +13,7 @@ class CommentTest < ActionDispatch::IntegrationTest
 
 	test "comment interface" do
 		get book_path(@book)
+		assert_match @comment.content, response.body
 		assert_select "form"
 
 		#comment fails

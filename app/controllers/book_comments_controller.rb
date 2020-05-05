@@ -10,6 +10,7 @@ class BookCommentsController < ApplicationController
 		else
 			@book_new = Book.new
 		    @user = @book.user
+		    @comments = BookComment.all
 			render "books/show"
 		end
 	end
