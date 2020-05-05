@@ -1,5 +1,5 @@
 <!-- recieves book -->
-
+<td>
 <% if book.favorited_by?(current_user) %>
   <%= link_to favorites_path(book), method: :delete do %>
     <i class="fas fa-heart"></i>
@@ -10,3 +10,4 @@
   <% end %>
 <% end %>
 <%= book.favorites_count %>
+</td>
