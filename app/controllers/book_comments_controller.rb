@@ -1,7 +1,8 @@
 class BookCommentsController < ApplicationController
 
+	before_action :set_book
+
 	def create
-		@book = Book.find(params[:id])
 		@comment = current_user.book_comments.new(comment_params)
 		@comment.book = @book
 		if @comment.save
@@ -16,9 +17,16 @@ class BookCommentsController < ApplicationController
 	end
 
 	def destroy
+		BookComment.find_by(user_id: current_user, book_id: params[:id]).destroy
+		flash[:notice] = "successfully deleted!"
+		redirect_to @book
 	end
 
 	private
+
+	def set_book
+		@book = Book.find(params[:id])
+	end
 
 	def comment_params
 		params.require(:book_comment).permit(:content)

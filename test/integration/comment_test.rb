@@ -16,7 +16,7 @@ class CommentTest < ActionDispatch::IntegrationTest
 		assert_match @comment.content, response.body
 		assert_select "form"
 
-		#comment fails
+		#comment create fails
 
 		assert_no_difference 'BookComment.count' do
 			post comment_path(@book), params: {book_comment:{content:"  "}}
@@ -24,11 +24,20 @@ class CommentTest < ActionDispatch::IntegrationTest
 		assert_template 'books/show'
 		assert_select "div#error_explanation"
 
-		#comment succeeds
+		#comment create succeeds
 
 		assert_difference 'BookComment.count', 1 do
 			post comment_path(@book), params: {book_comment:{content:"comment"}}
 		end
+		follow_redirect!
+		assert_not flash.empty?
+
+		#comment destroy by user
+
+		assert_difference 'BookComment.count', -1 do
+			delete comments_path(@book)
+		end
+		assert_redirected_to book_path(@book)
 		follow_redirect!
 		assert_not flash.empty?
 	end
