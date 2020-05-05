@@ -11,4 +11,9 @@ class BookCommentTest < ActiveSupport::TestCase
 	test "should be valid" do
 		assert @comment.valid?
 	end
+
+	test "should be present" do
+		@comment.content = "  "
+		assert_not @comment.valid?
+	end
 end
