@@ -9,9 +9,10 @@
 				<td style="font-weight: 20;"><%= link_to @book.title, book_path(@book) %></td>
 				<td style="font-weight: 20;"><%= @book.body %></td>
 				<%= render 'books/favorite', book: @book %>
-				<%= render 'edit_destroy_buttons', book: @book %>
+				<%= render 'books/edit_destroy_buttons', book: @book %>
 			</tr>
-			<tr><%= render 'comment_form', book: @book, comment: @comment %></tr>
+			<tr><%= render 'devise/shared/error_messages', resource: @comment %></tr>
+			<tr><%= render 'books/comment_form', book: @book, comment: @comment %></tr>
 		</table>
 	</div>
 </div>

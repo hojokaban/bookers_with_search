@@ -1,14 +1,26 @@
 class BookCommentsController < ApplicationController
 
 	def create
-		if BookComment.new(user_id: current_user.id, book_id: params[:id]).save
+		@book = Book.find(params[:id])
+		@comment = current_user.book_comments.new(comment_params)
+		@comment.book = @book
+		if @comment.save
 			flash[:notice] = "successfully upload comment!"
+			redirect_to @book
 		else
-			redirect_to book_path(params[:id])
+			@book_new = Book.new
+		    @user = @book.user
+			render "books/show"
 		end
 	end
 
 	def destroy
+	end
+
+	private
+
+	def comment_params
+		params.require(:book_comment).permit(:content)
 	end
 
 end
