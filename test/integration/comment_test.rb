@@ -13,6 +13,12 @@ class CommentTest < ActionDispatch::IntegrationTest
 
 	test "comment interface" do
 
+		#books/index
+
+		get books_path
+		assert_match "1 comment", response.body, count: 1
+		assert_match "0 comments", response.body, count: 1
+
 		#books/show
 
 		get book_path(@book)
