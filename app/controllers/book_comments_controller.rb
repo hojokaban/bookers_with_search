@@ -17,8 +17,12 @@ class BookCommentsController < ApplicationController
 	def destroy
 		@comment = BookComment.find(params[:id])
 		book = Book.find(@comment.book_id)
-		@comment.destroy
-		flash[:notice] = "successfully deleted!"
+		if @comment.user == current_user
+			@comment.destroy
+			flash[:notice] = "successfully deleted!"
+		else
+			flash[:notice] = "You cannot delete this comment"
+		end
 		redirect_to book
 	end
 

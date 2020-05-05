@@ -21,18 +21,18 @@ class CommentTest < ActionDispatch::IntegrationTest
 
 		assert_no_difference 'BookComment.count' do
 			post comment_path, params: {book_comment:{content:"  ",
-			                                          book_id: @book.id}}
-		end
-		assert_template 'books/show'
-		assert_select "div#error_explanation"
+				book_id: @book.id}}
+			end
+			assert_template 'books/show'
+			assert_select "div#error_explanation"
 		#comment create succeeds
 
 		assert_difference 'BookComment.count', 1 do
 			post comment_path, params: {book_comment:{content:"comment",
-			                                           book_id: @book.id}}
-		end
-		follow_redirect!
-		assert_not flash.empty?
+				book_id: @book.id}}
+			end
+			follow_redirect!
+			assert_not flash.empty?
 
 		#comment destroy by user
 
@@ -47,9 +47,10 @@ class CommentTest < ActionDispatch::IntegrationTest
 
 		#comment of other_user's destroy
 
-	    assert_select "a", text:"Delete", count: 0
-	  #  assert_no_difference 'BookComment.count' do
-		#	delete comments_path(@comment)
-		#end
+		assert_select "a", text:"Delete", count: 0
+		assert_no_difference 'BookComment.count' do
+			delete comments_path(@comment)
+		end
+		assert_not flash.empty?
 	end
 end
