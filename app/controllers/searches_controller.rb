@@ -1,9 +1,11 @@
 class SearchesController < ApplicationController
 
 	def search
-		@users = User.where(['name LIKE ?', "%#{params[:search][:searched_item]}%"])
 		@book = Book.new
-		render 'users/index'
+	#	@users = User.where(['name LIKE ?', "%#{params[:search][:searched_item]}%"])
+	#	render 'users/index'
+		@books = Book.where(['title LIKE ?', "%#{params[:search][:searched_item]}%"])
+		render 'books/index'
 	end
 
 end

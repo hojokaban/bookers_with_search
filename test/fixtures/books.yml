@@ -6,5 +6,5 @@ book1:
 
 book2:
   title: book2
-  body: book2_body
+  body: book2_body, followed by book1
   user: zoro
