@@ -8,6 +8,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
     @zoro = users(:zoro)
     @sanji = users(:sanji)
   	login_as(@luffy, :scope => :user)
+    @relationship = relationships(:three)
   end
 
   test "should see following/followers count" do
@@ -19,6 +20,8 @@ class FollowingTest < ActionDispatch::IntegrationTest
   	assert_select "a[href=?]", followers_user_path(@luffy)
   	assert_match "1 following", response.body
   	assert_match "1 follower", response.body
+    assert_select "form[action=?]", relationship_path(@relationship)
+    assert_select "form[action=?]", relationships_path
 
   end
 
@@ -67,9 +70,9 @@ class FollowingTest < ActionDispatch::IntegrationTest
   test "should unfollow" do
 
     assert_difference '@luffy.following.count', -1 do
-      delete relationship_path(relationships(:three))
+      delete relationship_path(@relationship)
     end
-    
+
   end
 
 end
