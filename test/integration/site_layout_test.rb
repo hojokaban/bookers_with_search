@@ -43,10 +43,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", users_path
 		assert_select "a[href=?]", destroy_user_session_path
 		assert_select "form[action=?]", search_path
+
 	end
 
 	test "should search" do
-
 		#search user
 
 		login_as(@user, :scope => :user)
@@ -57,7 +57,8 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
 		#search book
 
-		get search_path, params: {search: {searched_item: "book1"}}
+		get search_path, params: {search: {searched_item: "book1",
+		                                   target: "2"}}
 		assert_template 'books/index'
 		assert_match books(:book1).title, response.body
 		assert_no_match books(:book2).title, response.body
