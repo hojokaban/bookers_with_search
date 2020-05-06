@@ -1,3 +1,11 @@
 one:
   followed: luffy
   follower: zoro
+
+two:
+  followed: luffy
+  follower: sanji
+
+three:
+  followed: zoro
+  follower: luffy

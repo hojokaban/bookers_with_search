@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :following]
+  before_action :set_user, only: [:show, :edit, :update, :following, :followers]
 
   def show
   	@book = Book.new
@@ -13,7 +13,14 @@ class UsersController < ApplicationController
   end
 
   def following
+    @title = "Following"
     @users = @user.following.all
+    render 'follow_index'
+  end
+
+  def followers
+    @title = "Followers"
+    @users = @user.followers.all
     render 'follow_index'
   end
 
