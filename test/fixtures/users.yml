@@ -7,7 +7,7 @@ luffy:
 
 zoro:
   name: Roronoa Zoro
-  introduction: senakano kizu wa kenshi no haji
+  introduction: senakano kizu wa kenshi no haji, luffy no migi ude
   email: zoro@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 

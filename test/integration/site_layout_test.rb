@@ -47,9 +47,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
 	test "should search" do
 		login_as(@user, :scope => :user)
-		get search_path, params: {name: "ron"}
+		get search_path, params: {search: {searched_item: "ffy"}}
 		assert_template 'users/index'
-		assert_match users(:zoro).name, response.body
+		assert_match @user.name, response.body
+		assert_no_match users(:zoro).name, response.body
 	end
 
 end

@@ -3,7 +3,7 @@
 <% if user_signed_in? %>
 <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
 
-      <%= f.text_field :name %>
+      <%= f.text_field :searched_item %>
 
       <%= f.submit 'Search' %>
 
