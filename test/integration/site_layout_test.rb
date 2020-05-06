@@ -10,6 +10,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", about_book_path
 		assert_select "a[href=?]", new_user_session_path, count: 2
 		assert_select "a[href=?]", new_user_registration_path, count: 2
+		assert_select "form[action=?]", search_path, count: 0
 	end
 
 	test "should not redirect to when not logged in" do
@@ -26,7 +27,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 		assert_redirected_to new_user_session_path
 		get edit_user_path(1)
 		assert_redirected_to new_user_session_path
-		
+
 	end
 
 	def setup
@@ -41,5 +42,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", books_path
 		assert_select "a[href=?]", users_path
 		assert_select "a[href=?]", destroy_user_session_path
+		assert_select "form[action=?]", search_path
 	end
 end
