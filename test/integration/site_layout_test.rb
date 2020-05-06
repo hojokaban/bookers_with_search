@@ -72,15 +72,24 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 			get search_path, params: {search: {key: "Monkey D Luffy",
 												target: "user",
 												way: 1}}
-				assert_match @user.name, response.body
+			assert_match @user.name, response.body
 			get search_path, params: {search: {key: "Monkey D",
 												target: "user",
 												way: 2}}
-					assert_match @user.name, response.body
+			assert_match @user.name, response.body
 			get search_path, params: {search: {key: "D Luffy",
 												target: "user",
 												way: 3}}
-						assert_match @user.name, response.body
+			assert_match @user.name, response.body
+			get search_path, params: {search: {key: "D Luffy",
+												target: "user",
+												way: 0}}
+			assert_not flash.empty?
+			get search_path, params: {search: {key: "D Luffy",
+												target: "",
+												way: 4}}
+			assert_not flash.empty?
+			assert_redirected_to user_path(@user)
 
 	end
 
