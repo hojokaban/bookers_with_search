@@ -11,11 +11,13 @@ class FollowingTest < ActionDispatch::IntegrationTest
 
   test "should see following/followers count" do
 
-  	get books_path
+  	get users_path
   	assert_match @user.following.count.to_s, response.body
   	assert_match @user.followers.count.to_s, response.body
   	assert_select "a[href=?]", following_user_path(@user)
   	assert_select "a[href=?]", followers_user_path(@user)
+  	assert_match "1 following", response.body
+  	assert_match "1 follower", response.body
 
   end
 
@@ -24,6 +26,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
   	get following_user_path(@user)
   	assert_select "h2", "User Following"
   	assert_match @user.following.first.name, response.body
+  	assert_match "1 following", response.body
 
   end
 
@@ -32,6 +35,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
   	get followers_user_path(@user)
   	assert_select "h2", "User Followers"
   	assert_match @user.followers.first.name, response.body
+  	assert_match "1 follower", response.body
 
   end
 
