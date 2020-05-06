@@ -32,13 +32,13 @@ class UserTest < ActiveSupport::TestCase
 
   test "should follow and unfollow user" do
     luffy = users(:luffy)
-    zoro = users(:zoro)
-    assert_not luffy.following?(zoro)
-    luffy.follow(zoro)
-    assert luffy.following?(zoro)
-    assert zoro.followers.include?(luffy)
-    luffy.unfollow(zoro)
-    assert_not luffy.following?(zoro)
+    sanji = users(:sanji)
+    assert_not luffy.following?(sanji)
+    luffy.follow(sanji)
+    assert luffy.following?(sanji)
+    assert sanji.followers.include?(luffy)
+    luffy.unfollow(sanji)
+    assert_not luffy.following?(sanji)
   end
 
 end
