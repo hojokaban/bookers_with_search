@@ -5,6 +5,8 @@ class FollowingTest < ActionDispatch::IntegrationTest
 
   def setup
   	@luffy = users(:luffy)
+    @zoro = users(:zoro)
+    @sanji = users(:sanji)
   	login_as(@luffy, :scope => :user)
   end
 
@@ -44,12 +46,22 @@ class FollowingTest < ActionDispatch::IntegrationTest
   	assert_select "input.btn-success", count: 0
   	assert_select "input.btn-primary", count: 1
 
-  	get user_path(users(:zoro))
+  	get user_path(@zoro)
   	assert_select "input.btn-primary", count: 2
 
-  	get user_path(users(:sanji))
+  	get user_path(@sanji)
   	assert_select "input.btn-success", count: 1
   	assert_select "input.btn-primary", count: 1
+  end
+
+  test "should follow" do
+
+    assert_difference '@luffy.following.count', 1 do
+      post relationships_path, params: {followed_id: @sanji.id}
+    end
+    assert_no_difference '@luffy.following.count' do
+      post relationships_path, params: {followed_id: @sanji.id}
+    end
   end
 
 end
