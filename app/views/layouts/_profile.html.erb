@@ -1,0 +1,21 @@
+<!-- recieves user -->
+
+<%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "noimages.png", size:'100x100' %>
+	<table class="table">
+		<tr>
+			<th>name</th>
+			<th><%= user.name %></th>
+		</tr>
+		<tr>
+			<th>introduction</th>
+			<th><%= user.introduction %></th>
+		</tr>
+		<tr>
+			<th>follows</th>
+			<th><%= user.following.count %></th>
+		</tr>
+		<tr>
+			<th>followers</th>
+			<th><%= user.followers.count %></th>
+		</tr>
+	</table>

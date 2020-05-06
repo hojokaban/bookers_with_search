@@ -1,0 +1,11 @@
+<!-- recieves book comments -->
+<tbody><% comments.each do |comment| %>
+	<tr><td>
+		<%= comment.content %>
+		</td>
+		<% if comment.user_id == current_user.id %>
+		<td><%= link_to "Delete", comments_path(comment), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn btn-danger" %></td>
+		<% end %>
+	</tr>
+	<% end %>
+</tbody>
