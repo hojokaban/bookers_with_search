@@ -10,3 +10,9 @@ zoro:
   introduction: senakano kizu wa kenshi no haji
   email: zoro@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+sanji:
+  name: Vin Smoke Sanji
+  introduction: meshi wo somatsuni suruna
+  email: sanji@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

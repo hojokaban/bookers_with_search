@@ -3,6 +3,8 @@
 	<h2>User info</h2>
 	<%= render 'layouts/profile', user: user %>
 
+	<%= render 'users/follow_button', user: user %>
+
 	<%= link_to((user == current_user)? edit_user_path(user):current_user, class:"col-xs-12 btn btn-default submit-btn", id:"btnn", style:"height: 35px;") do %><span class="glyphicon glyphicon-wrench"></span><% end %>
 
 	<div class="row">
