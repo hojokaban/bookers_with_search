@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 	delete 'favorites/:id' => 'favorites#destroy', as: 'favorites'
 	post 'comments' => 'book_comments#create', as: 'comment'
 	delete 'comments/:id' => 'book_comments#destroy', as: 'comments'
+  get 'search' => 'searches#search'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :books
