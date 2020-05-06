@@ -1,0 +1,9 @@
+<!-- recieve -->
+
+<%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
+
+      <%= f.text_field :name %>
+
+      <%= f.submit 'Search' %>
+
+  <% end %>
