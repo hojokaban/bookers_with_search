@@ -41,7 +41,10 @@
     <%= render 'layouts/search_form' %>
   </div>
 
-  <% if flash[:notice] %><%= flash[:notice] %><% end %>
+  <div class="flash">
+    <% if flash[:notice] %><%= flash[:notice] %><% end %>
+  </div>
+  
   <%= yield %>
 
 </div>
