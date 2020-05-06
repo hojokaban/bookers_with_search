@@ -3,6 +3,10 @@ require 'test_helper'
 class SiteLayoutTest < ActionDispatch::IntegrationTest
 	include Warden::Test::Helpers
 
+	def setup
+		@user = users(:luffy)
+	end
+
 	test "layout links" do
 		get root_path
 		assert_template 'books/home'
@@ -30,10 +34,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
 	end
 
-	def setup
-		@user = users(:luffy)
-	end
-
 	test "layout links when logged in" do
 		login_as(@user, :scope => :user)
 		get root_path
@@ -44,4 +44,12 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 		assert_select "a[href=?]", destroy_user_session_path
 		assert_select "form[action=?]", search_path
 	end
+
+	test "should search" do
+		login_as(@user, :scope => :user)
+		get search_path, params: {name: "ron"}
+		assert_template 'users/index'
+		assert_match users(:zoro).name, response.body
+	end
+
 end
