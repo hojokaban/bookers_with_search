@@ -64,4 +64,12 @@ class FollowingTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should unfollow" do
+
+    assert_difference '@luffy.following.count', -1 do
+      delete relationship_path(relationships(:three))
+    end
+    
+  end
+
 end
