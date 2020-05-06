@@ -4,8 +4,8 @@ User.create!(name: "Luffy",
 	         password: "password")
 
 29.times do |n|
-	name = Faker::Name.name
-	introduction = Faker::Lorem.sentence
+	name = Faker::Name.name[0..19]
+	introduction = Faker::Lorem.sentence[0..49]
 	email = "user-#{n+1}@example.com"
 	password = "password"
 	User.create!(name: name,
@@ -16,7 +16,7 @@ end
 
 29.times do |n|
 	title = Faker::Cannabis.type
-	body = Faker::Food.dish
+	body = Faker::Food.dish[0..199]
 	Book.create!(title: title,
 		         body: body,
 		          user_id: n + 2)
