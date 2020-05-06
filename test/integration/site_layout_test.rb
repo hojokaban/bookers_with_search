@@ -51,20 +51,36 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
 		login_as(@user, :scope => :user)
 		get search_path, params: {search: {key: "Luffy",
-		 								   target: "user",
-		 								    way: 4}}
-		assert_template 'users/index'
-		assert_match @user.name, response.body
-		assert_no_match users(:zoro).name, response.body
+											target: "user",
+											way: 4}}
+			assert_template 'users/index'
+			assert_match @user.name, response.body
+			assert_no_match users(:zoro).name, response.body
 
 		#search book
 
 		get search_path, params: {search: {key: "book1",
-		                                   target: "book",
-		                                    way: 4}}
-		assert_template 'books/index'
-		assert_match books(:book1).title, response.body
-		assert_no_match books(:book2).title, response.body
+											target: "book",
+											way: 4}}
+			assert_template 'books/index'
+			assert_match books(:book1).title, response.body
+			assert_no_match books(:book2).title, response.body
+	end
+
+	test "should search correctly by each way of selection" do
+			login_as(@user, :scope => :user)
+			get search_path, params: {search: {key: "Monkey D Luffy",
+												target: "user",
+												way: 1}}
+				assert_match @user.name, response.body
+			get search_path, params: {search: {key: "Monkey D",
+												target: "user",
+												way: 2}}
+					assert_match @user.name, response.body
+			get search_path, params: {search: {key: "D Luffy",
+												target: "user",
+												way: 3}}
+						assert_match @user.name, response.body
 
 	end
 
