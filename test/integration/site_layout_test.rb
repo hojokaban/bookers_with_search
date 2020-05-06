@@ -26,6 +26,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 		assert_redirected_to new_user_session_path
 		get edit_user_path(1)
 		assert_redirected_to new_user_session_path
+		
 	end
 
 	def setup
