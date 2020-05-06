@@ -3,9 +3,12 @@
 <% if user_signed_in? %>
 <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
 
-      <%= f.text_field :searched_item %>
+      <%= f.text_field :key %>
 
-      <%= f.select :target, [["User", "user"],["Book", "book"]], prompt: "Select" %>
+      <%= f.select :target, [["User", "user"],["Book", "book"]] %>
+
+      <%= f.select :way, [["完全一致", 1],["前方一致", 2],
+      						["後方一致", 3],["部分一致", 4]] %>
 
       <%= f.submit 'Search' %>
 

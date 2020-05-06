@@ -46,23 +46,26 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
 	end
 
-	test "should search" do
+	test "should search book or user" do
 		#search user
 
 		login_as(@user, :scope => :user)
-		get search_path, params: {search: {searched_item: "ffy",
-		 								   target: "user"}}
+		get search_path, params: {search: {key: "Luffy",
+		 								   target: "user",
+		 								    way: 4}}
 		assert_template 'users/index'
 		assert_match @user.name, response.body
 		assert_no_match users(:zoro).name, response.body
 
 		#search book
 
-		get search_path, params: {search: {searched_item: "book1",
-		                                   target: "book"}}
+		get search_path, params: {search: {key: "book1",
+		                                   target: "book",
+		                                    way: 4}}
 		assert_template 'books/index'
 		assert_match books(:book1).title, response.body
 		assert_no_match books(:book2).title, response.body
+
 	end
 
 end

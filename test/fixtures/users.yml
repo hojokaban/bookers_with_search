@@ -1,6 +1,6 @@
 
 luffy:
-  name: Monkey D luffy
+  name: Monkey D Luffy
   introduction: kaizokuou ni ore wa naru
   email: luffy@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
